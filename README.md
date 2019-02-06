@@ -41,6 +41,8 @@ For this particuar project, folder structure is the following:
     - Docker/php72 : this repository
     - Source/apache : all of projects that will be available to Apache server
 
+All request that do not match any available virtual host, will be redirected to page located at `/var/www/index.html` (on host: `Source/apache/index.html`)
+
 ### Installation
 
 1. Clone this repository to `Development/Docker/php72`
