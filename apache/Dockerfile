@@ -4,21 +4,20 @@ LABEL maintainer="Aleksa Sukovic"
 
 # Configuring environment
 ENV APACHE_DOCUMENT_ROOT /var/www/
-COPY ./Docker/php72/apache/config/php.ini /usr/local/etc/php/
-COPY ./Docker/php72/apache/config/000-default.conf /etc/apache2/sites-available
-COPY ./Docker/php72/apache/config/server-name.conf /etc/apache2/conf-available
+COPY ./apache/config/php.ini /usr/local/etc/php/
+COPY ./apache/config/000-default.conf /etc/apache2/sites-available
+COPY ./apache/config/server-name.conf /etc/apache2/conf-available
 
 RUN ["a2enmod", "ssl"]
 RUN ["a2enconf", "server-name"]
 RUN ["a2enmod", "rewrite", "negotiation"]
 
 # Source Files
-COPY ./Source/apache/ /var/www/
-COPY ./Docker/php72/apache/config/index.html /var/www/
+COPY ./apache/config/index.html /var/www/
 RUN ["chmod", "-R", "777", "/var/www/"]
 
 # Scripts
-COPY ./Docker/php72/apache/scripts/* /scripts/
+COPY ./apache/scripts/* /scripts/
 RUN ["chmod", "-R", "+x", "/scripts/"]
 
 # Basic utility packages

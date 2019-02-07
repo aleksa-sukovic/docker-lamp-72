@@ -2,8 +2,8 @@ version: '3'
 services:
     apache-php:
         build:
-            context: ../../
-            dockerfile: ./Docker/php72/apache/Dockerfile
+            context: .
+            dockerfile: ./apache/Dockerfile
         image: aleksa/php:7.2.14-apache
         networks:
             - backend
@@ -16,8 +16,8 @@ services:
             - "443:443"
     db:
         build:
-            context: ../../
-            dockerfile: ./Docker/php72/mariadb/Dockerfile
+            context: .
+            dockerfile: ./mariadb/Dockerfile
         image: aleksa/mariadb:10.3.9
         restart: always
         networks:
