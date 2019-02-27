@@ -9,6 +9,9 @@ fi
 
 chmod -R 777 /var/www
 
+# Dotfile
+echo "[[ -f /root/.profile ]] && . /root/.profile" >> /root/.bashrc
+
 # Bringing apache to foreground
 cmd="apache2-foreground"
 eval "$cmd"

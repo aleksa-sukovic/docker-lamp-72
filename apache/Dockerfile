@@ -5,9 +5,9 @@ LABEL maintainer="Aleksa Sukovic"
 # Configuring environment
 ENV APACHE_DOCUMENT_ROOT /var/www/
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
-COPY ./apache/config/timezone.ini $PHP_INI_DIR/conf.d/
 COPY ./apache/config/000-default.conf /etc/apache2/sites-available
 COPY ./apache/config/server-name.conf /etc/apache2/conf-available
+COPY ./apache/config/.profile /root
 
 RUN ["a2enmod", "ssl"]
 RUN ["a2enconf", "server-name"]
