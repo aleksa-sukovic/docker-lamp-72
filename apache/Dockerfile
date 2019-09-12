@@ -27,9 +27,6 @@ RUN ["a2enmod", "ssl"]
 RUN ["a2enconf", "server-name"]
 RUN ["a2enmod", "rewrite", "negotiation"]
 
-# Source Files
-RUN ["chmod", "-R", "777", "/var/www/"]
-
 # Scripts
 COPY ./apache/scripts/* /scripts/
 RUN ["chmod", "-R", "+x", "/scripts/"]
