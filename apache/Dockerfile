@@ -31,8 +31,13 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
         gnupg2
 
 # Extensions
-RUN ["docker-php-ext-install", "pdo"]
-RUN ["docker-php-ext-install", "pdo_mysql"]
+RUN docker-php-ext-install mysqli \
+    pdo \
+    pdo_mysql
+
+RUN docker-php-ext-enable mysqli \
+    pdo \
+    pdo_mysql
 
 # Installing Composer
 RUN /scripts/composer-installer.sh \
